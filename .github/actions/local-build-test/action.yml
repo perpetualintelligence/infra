@@ -1,21 +1,36 @@
-# CI is always local for a single repo
-- name: Build metadata
-  run: |
-    echo "PI_CI_REFERENCE=local" >> $GITHUB_ENV
-    continue-on-error: false
+name: 'local-build-test'
+description: 'Build and test the projects in local cadence'
+inputs:
+  config:
+    description: 'The build configuration'
+    type: choice
+    options:
+    - Debug
+    - Release
+    default: Release
+    required: true
+runs:
+  using: "composite"
+  steps:
+  
+  # CI is always local for a single repo
+  - name: Build metadata
+    run: |
+      echo "PI_CI_REFERENCE=local" >> $GITHUB_ENV
+      continue-on-error: false
 
-# Setup .Net with global.json
-- name: Setup .NET
-  uses: actions/setup-dotnet@v1
+  # Setup .Net with global.json
+  - name: Setup .NET
+    uses: actions/setup-dotnet@v1
       
-# Restore dependencies
-- name: Restore
-  run: dotnet restore
+  # Restore dependencies
+  - name: Restore
+    run: dotnet restore
     
-# Build
-- name: Build
-  run: dotnet build --no-restore
+  # Build
+  - name: Build
+    run: dotnet build --no-restore
       
-# Test
-- name: Test
-  run: dotnet test --no-build --verbosity normal
+  # Test
+  - name: Test
+    run: dotnet test --no-build --verbosity normal
