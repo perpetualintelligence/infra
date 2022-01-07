@@ -3,23 +3,12 @@ description: 'Build and test the projects in local cadence'
 inputs:
   config:
     description: 'The build configuration'
-    type: choice
-    options:
-    - Debug
-    - Release
     default: Release
     required: true
 runs:
   using: "composite"
   steps:
   
-  # CI is always local for a single repo
-  - name: Build metadata
-    run: |
-      echo "PI_CI_REFERENCE=local" >> $GITHUB_ENV
-      continue-on-error: false
-    shell: bash
-
   # Setup .Net with global.json
   - name: Setup .NET
     uses: actions/setup-dotnet@v1
