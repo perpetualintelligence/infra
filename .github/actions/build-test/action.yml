@@ -18,6 +18,7 @@ runs:
   # Setup .Net with global.json
   - name: Setup .NET
     uses: actions/setup-dotnet@v1
+    with:
       dotnet-version: ${{ inputs.net-sdk }}
       
   # Restore dependencies
