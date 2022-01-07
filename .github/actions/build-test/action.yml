@@ -20,7 +20,7 @@ runs:
     
   # Build
   - name: Build
-    run: dotnet build --no-restore
+    run: dotnet build --no-restore -c ${{ inputs.config }}
     shell: bash
       
   # Test
