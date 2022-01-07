@@ -8,18 +8,9 @@ inputs:
   working-directory:
     description: 'The working directory'
     required: true
-  net-sdk:
-    description: 'The .NET SDK version'
-    required: true
 runs:
   using: "composite"
-  steps:
-  
-  # Setup .Net with global.json
-  - name: Setup .NET
-    uses: actions/setup-dotnet@v1
-    with:
-      dotnet-version: ${{ inputs.net-sdk }}
+  steps:  
       
   # Restore dependencies
   - name: Restore
