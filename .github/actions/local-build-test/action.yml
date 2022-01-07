@@ -23,7 +23,6 @@ runs:
   # Setup .Net with global.json
   - name: Setup .NET
     uses: actions/setup-dotnet@v1
-    shell: bash
       
   # Restore dependencies
   - name: Restore
