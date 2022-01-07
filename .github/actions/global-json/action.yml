@@ -1,0 +1,19 @@
+name: 'global-json'
+description: 'Reads the global.json file'
+inputs:
+  path:
+    description: 'The global.json file path'
+    required: true
+outputs:
+  sdk-version:
+    description: "The SDK version"
+    value: ${{ steps.read-sdk-version.outputs.version }}
+runs:
+  using: "composite"
+  steps:
+
+  # Reads the global.json and extracts the sdk.version property with jq command
+  - id: read-sdk-version
+    run: echo "::set-output name=version::$(jq -r '.sdk.version' ${{ inputs.path }})"
+    shell: bash
+
