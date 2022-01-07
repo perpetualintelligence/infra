@@ -1,2 +1,1 @@
-# shared
-The shared configuration for all the repos.
+The shared configurations and tools for all the repos.
