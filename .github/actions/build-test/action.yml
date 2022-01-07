@@ -1,4 +1,4 @@
-name: 'local-build-test'
+name: 'build-test'
 description: 'Build and test the projects in local cadence'
 inputs:
   config:
